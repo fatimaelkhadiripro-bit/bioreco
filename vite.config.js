@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/bioreco/',
+  base: './', // Relative base path ensures assets load on GitHub Pages under any subpath
   build: {
-    outDir: 'docs', // Allows direct GitHub Pages deployment from main branch /docs folder
+    outDir: 'docs',
   }
 })
