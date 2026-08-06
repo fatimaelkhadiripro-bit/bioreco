@@ -316,18 +316,10 @@ export default function App() {
               </div>
 
               <div className="code-block" style={{ marginBottom: '24px' }}>
-                <div style={{ color: '#64748b', marginBottom: '8px' }}># 1. Initialize repository and commit code</div>
-                <div>git init</div>
+                <div style={{ color: '#64748b', marginBottom: '8px' }}># Push to main branch (GitHub Actions auto-deploys to GitHub Pages)</div>
                 <div>git add .</div>
-                <div>git commit -m "feat: initial bioreco organ perception site"</div>
-                <br />
-                <div style={{ color: '#64748b', marginBottom: '8px' }}># 2. Link your GitHub repository</div>
-                <div>git remote add origin https://github.com/YOUR_USERNAME/bioreco.git</div>
-                <div>git branch -M main</div>
-                <div>git push -u origin main</div>
-                <br />
-                <div style={{ color: '#64748b', marginBottom: '8px' }}># 3. Publish to GitHub Pages</div>
-                <div>npm run deploy</div>
+                <div>git commit -m "feat: update bioreco site"</div>
+                <div>git push origin main</div>
               </div>
 
               <div style={{ background: 'rgba(0, 243, 255, 0.05)', border: '1px solid rgba(0, 243, 255, 0.2)', padding: '16px', borderRadius: '10px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
