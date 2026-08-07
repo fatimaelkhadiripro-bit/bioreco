@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -17,7 +17,6 @@
       --panel: rgba(15, 23, 42, 0.7);
       --border: rgba(56, 189, 248, 0.15);
       --cyan: #00f3ff;
-      --emerald: #10b981;
       --text: #f8fafc;
       --muted: #94a3b8;
     }
@@ -62,13 +61,26 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-size: 1.5rem;
       font-weight: 800;
       color: #fff;
     }
 
     .logo span { color: var(--cyan); }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(0, 243, 255, 0.2) 0%, rgba(2, 132, 199, 0.3) 100%);
+      border: 1px solid rgba(0, 243, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      box-shadow: 0 0 12px rgba(0, 243, 255, 0.25);
+    }
 
     .badge {
       display: inline-block;
@@ -84,20 +96,20 @@
 
     /* Hero */
     .hero {
-      padding: 80px 0 60px;
+      padding: 100px 0 60px;
       text-align: center;
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
       line-height: 1.15;
       margin-bottom: 20px;
     }
 
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--muted);
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto 32px;
     }
 
@@ -106,14 +118,14 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
-      margin: 40px 0;
+      margin: 40px 0 80px;
     }
 
     .card {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 28px;
+      padding: 32px;
       transition: all 0.2s ease;
     }
 
@@ -123,30 +135,17 @@
     }
 
     .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
       color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .card p {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       color: var(--muted);
-    }
-
-    /* Interactive Demo Box */
-    .demo-box {
-      background: #040710;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      margin: 40px 0;
-    }
-
-    .controls {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
     }
 
     .btn {
@@ -158,33 +157,13 @@
       font-weight: 600;
       cursor: pointer;
       font-family: 'Outfit', sans-serif;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
 
-    .btn.active {
-      background: rgba(0, 243, 255, 0.15);
+    .btn:hover {
       border-color: var(--cyan);
       color: var(--cyan);
-    }
-
-    .slider-group {
-      margin-top: 20px;
-    }
-
-    input[type="range"] {
-      width: 100%;
-      accent-color: var(--cyan);
-    }
-
-    .code-block {
-      background: #02040a;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.875rem;
-      color: #38bdf8;
-      overflow-x: auto;
-      margin-top: 16px;
     }
 
     footer {
@@ -193,7 +172,6 @@
       text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
-      margin-top: 60px;
     }
   </style>
 </head>
@@ -203,16 +181,21 @@
   <header>
     <div class="container nav-wrapper">
       <div class="logo">
-        🫀 bio<span>reco</span>
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        bio<span>reco</span>
       </div>
-      <a href="https://github.com/fatimaelkhadiripro-bit/bioreco" target="_blank" class="btn" style="text-decoration: none;">GitHub Repository</a>
+      <a href="https://github.com/fatimaelkhadiripro-bit/bioreco" target="_blank" class="btn">GitHub Repository</a>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <div class="badge">Open-Source Biomedical Project</div>
+      <div class="badge">Biomedical Perception Suite</div>
       <h1>Making Human Organ Perception <br><span style="color: var(--cyan);">Easier & Accessible</span></h1>
       <p>Bioreco is dedicated to building AI models and web applications that simplify human organ perception, providing advanced sensor fusion services combining Echography (ultrasound) imaging with 3D organ models.</p>
     </div>
@@ -220,67 +203,31 @@
 
   <!-- Services & Focus -->
   <section class="container">
-    <h2 style="text-align: center; margin-bottom: 12px; font-size: 2rem;">Core Focus & Services</h2>
+    <h2 style="text-align: center; margin-bottom: 16px; font-size: 2.2rem;">Core Focus & Services</h2>
     <div class="grid">
       <div class="card">
-        <h3>🫀 Organ Perception Models</h3>
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          Organ Perception Models
+        </h3>
         <p>Creating deep learning models for automated organ boundary detection, volumetric estimation, and anatomical feature recognition.</p>
       </div>
 
       <div class="card">
-        <h3>📡 Echography & 3D Fusion</h3>
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8H4v-8"/><path d="m4 12 8-8 8 8"/></svg>
+          Echography & 3D Fusion
+        </h3>
         <p>Real-time spatial registration overlaying 2D ultrasound scans directly onto multi-planar 3D organ anatomical meshes.</p>
       </div>
 
       <div class="card">
-        <h3>🌐 Open Web Applications</h3>
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          Open Web Applications
+        </h3>
         <p>Lightweight, accessible web tools enabling researchers and developers to visualize and interact with organ perception models.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Interactive Sensor Fusion Preview -->
-  <section class="container">
-    <div class="demo-box">
-      <h3 style="margin-bottom: 8px; font-size: 1.4rem;">Live Sensor Fusion Simulation</h3>
-      <p style="color: var(--muted); margin-bottom: 20px;">Adjust the echography slicing depth to see simulated spatial registration telemetry.</p>
-
-      <div class="controls">
-        <button className="btn active" class="btn active" onclick="selectOrgan('Heart', 98.7, '2.5 MHz Phased Array', this)">Heart</button>
-        <button class="btn" onclick="selectOrgan('Brain', 97.2, '3.5 MHz Transcranial', this)">Brain</button>
-        <button class="btn" onclick="selectOrgan('Kidney', 99.1, '5.0 MHz Convex Probe', this)">Kidney</button>
-        <button class="btn" onclick="selectOrgan('Lungs', 96.8, '3.0 MHz Linear Probe', this)">Lungs</button>
-      </div>
-
-      <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-          <span style="color: var(--muted);">Target Organ: <strong id="organ-name" style="color: #fff;">Heart</strong></span>
-          <span style="color: var(--emerald);">Confidence: <strong id="organ-conf">98.7%</strong></span>
-        </div>
-
-        <div class="slider-group">
-          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px;">
-            <span>Echography Slice Depth</span>
-            <span id="depth-val" style="color: var(--cyan); font-family: 'JetBrains Mono', monospace;">54 mm</span>
-          </div>
-          <input type="range" id="depth-slider" min="10" max="150" value="54" oninput="updateDepth(this.value)">
-        </div>
-
-        <div style="margin-top: 16px; font-size: 0.85rem; color: var(--muted); display: flex; justify-content: space-between;">
-          <span>Probe Mode: <span id="probe-mode" style="color: #fff;">2.5 MHz Phased Array</span></span>
-          <span style="color: var(--cyan);">Status: Spatial Sync Active</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GitHub Quickstart -->
-  <section class="container">
-    <h3 style="font-size: 1.4rem; margin-bottom: 12px;">Open Source Project Setup</h3>
-    <p style="color: var(--muted);">Clone and contribute to the Bioreco codebase on GitHub:</p>
-    <div class="code-block">
-      git clone https://github.com/fatimaelkhadiripro-bit/bioreco.git<br>
-      cd bioreco
     </div>
   </section>
 
@@ -291,18 +238,5 @@
     </div>
   </footer>
 
-  <script>
-    function selectOrgan(name, conf, probe, btn) {
-      document.querySelectorAll('.controls .btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('organ-name').innerText = name;
-      document.getElementById('organ-conf').innerText = conf + '%';
-      document.getElementById('probe-mode').innerText = probe;
-    }
-
-    function updateDepth(val) {
-      document.getElementById('depth-val').innerText = val + ' mm';
-    }
-  </script>
 </body>
 </html>
