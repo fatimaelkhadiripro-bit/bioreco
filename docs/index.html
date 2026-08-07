@@ -1,21 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫀</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bioreco | Human Organ Perception & Sensor Fusion</title>
-    <meta name="description" content="Bioreco is an open-source platform creating models and web apps that simplify human organ perception and provide sensor fusion with Echography and 3D organ models." />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    
-    <script type="module" crossorigin src="./assets/index-ffc28146.js"></script>
-    <link rel="stylesheet" href="./assets/index-e947113d.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bioreco — Human Organ Perception & Sensor Fusion</title>
+  <meta name="description" content="Bioreco creates open-source models and web applications that simplify human organ perception, featuring sensor fusion with Echography and 3D organ models.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070b12;
+      --panel: rgba(15, 23, 42, 0.7);
+      --border: rgba(56, 189, 248, 0.15);
+      --cyan: #00f3ff;
+      --emerald: #10b981;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
+    }
+
+    h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 18, 0.85);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .logo span { color: var(--cyan); }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(0, 243, 255, 0.1);
+      border: 1px solid rgba(0, 243, 255, 0.3);
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(0, 243, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--cyan);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* Interactive Demo Box */
+    .demo-box {
+      background: #040710;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 40px 0;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(30, 41, 59, 0.5);
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .btn.active {
+      background: rgba(0, 243, 255, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .slider-group {
+      margin-top: 20px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--cyan);
+    }
+
+    .code-block {
+      background: #02040a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="logo">
+        🫀 bio<span>reco</span>
+      </div>
+      <a href="https://github.com/fatimaelkhadiripro-bit/bioreco" target="_blank" class="btn" style="text-decoration: none;">GitHub Repository</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">Open-Source Biomedical Project</div>
+      <h1>Making Human Organ Perception <br><span style="color: var(--cyan);">Easier & Accessible</span></h1>
+      <p>Bioreco is dedicated to building AI models and web applications that simplify human organ perception, providing advanced sensor fusion services combining Echography (ultrasound) imaging with 3D organ models.</p>
+    </div>
+  </section>
+
+  <!-- Services & Focus -->
+  <section class="container">
+    <h2 style="text-align: center; margin-bottom: 12px; font-size: 2rem;">Core Focus & Services</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>🫀 Organ Perception Models</h3>
+        <p>Creating deep learning models for automated organ boundary detection, volumetric estimation, and anatomical feature recognition.</p>
+      </div>
+
+      <div class="card">
+        <h3>📡 Echography & 3D Fusion</h3>
+        <p>Real-time spatial registration overlaying 2D ultrasound scans directly onto multi-planar 3D organ anatomical meshes.</p>
+      </div>
+
+      <div class="card">
+        <h3>🌐 Open Web Applications</h3>
+        <p>Lightweight, accessible web tools enabling researchers and developers to visualize and interact with organ perception models.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sensor Fusion Preview -->
+  <section class="container">
+    <div class="demo-box">
+      <h3 style="margin-bottom: 8px; font-size: 1.4rem;">Live Sensor Fusion Simulation</h3>
+      <p style="color: var(--muted); margin-bottom: 20px;">Adjust the echography slicing depth to see simulated spatial registration telemetry.</p>
+
+      <div class="controls">
+        <button class="btn active" onclick="selectOrgan('Heart', 98.7, '2.5 MHz Phased Array', this)">Heart</button>
+        <button class="btn" onclick="selectOrgan('Brain', 97.2, '3.5 MHz Transcranial', this)">Brain</button>
+        <button class="btn" onclick="selectOrgan('Kidney', 99.1, '5.0 MHz Convex Probe', this)">Kidney</button>
+        <button class="btn" onclick="selectOrgan('Lungs', 96.8, '3.0 MHz Linear Probe', this)">Lungs</button>
+      </div>
+
+      <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+          <span style="color: var(--muted);">Target Organ: <strong id="organ-name" style="color: #fff;">Heart</strong></span>
+          <span style="color: var(--emerald);">Confidence: <strong id="organ-conf">98.7%</strong></span>
+        </div>
+
+        <div class="slider-group">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px;">
+            <span>Echography Slice Depth</span>
+            <span id="depth-val" style="color: var(--cyan); font-family: 'JetBrains Mono', monospace;">54 mm</span>
+          </div>
+          <input type="range" id="depth-slider" min="10" max="150" value="54" oninput="updateDepth(this.value)">
+        </div>
+
+        <div style="margin-top: 16px; font-size: 0.85rem; color: var(--muted); display: flex; justify-content: space-between;">
+          <span>Probe Mode: <span id="probe-mode" style="color: #fff;">2.5 MHz Phased Array</span></span>
+          <span style="color: var(--cyan);">Status: Spatial Sync Active</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Quickstart -->
+  <section class="container">
+    <h3 style="font-size: 1.4rem; margin-bottom: 12px;">Open Source Project Setup</h3>
+    <p style="color: var(--muted);">Clone and contribute to the Bioreco codebase on GitHub:</p>
+    <div class="code-block">
+      git clone https://github.com/fatimaelkhadiripro-bit/bioreco.git<br>
+      cd bioreco
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>Bioreco Project &copy; 2026 — Open-Source Organ Perception & Sensor Fusion Platform.</p>
+    </div>
+  </footer>
+
+  <script>
+    function selectOrgan(name, conf, probe, btn) {
+      document.querySelectorAll('.controls .btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('organ-name').innerText = name;
+      document.getElementById('organ-conf').innerText = conf + '%';
+      document.getElementById('probe-mode').innerText = probe;
+    }
+
+    function updateDepth(val) {
+      document.getElementById('depth-val').innerText = val + ' mm';
+    }
+  </script>
+</body>
 </html>
