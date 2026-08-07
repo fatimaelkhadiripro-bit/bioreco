@@ -82,6 +82,22 @@
       box-shadow: 0 0 12px rgba(0, 243, 255, 0.25);
     }
 
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
     .badge {
       display: inline-block;
       padding: 4px 12px;
@@ -96,7 +112,7 @@
 
     /* Hero */
     .hero {
-      padding: 100px 0 60px;
+      padding: 90px 0 50px;
       text-align: center;
     }
 
@@ -113,12 +129,48 @@
       margin: 0 auto 32px;
     }
 
+    /* Showcase Image Box */
+    .image-box {
+      margin: 40px 0 60px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .image-comment {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(4, 7, 16, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .image-comment strong {
+      color: var(--cyan);
+      font-style: normal;
+    }
+
     /* Cards Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
-      margin: 40px 0 80px;
+      margin: 32px 0 60px;
     }
 
     .card {
@@ -148,22 +200,70 @@
       color: var(--muted);
     }
 
-    .btn {
-      padding: 10px 20px;
-      border-radius: 8px;
+    /* Contact Section */
+    .contact-section {
+      background: var(--panel);
       border: 1px solid var(--border);
-      background: rgba(30, 41, 59, 0.5);
+      border-radius: 18px;
+      padding: 40px;
+      margin: 60px 0;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 500;
       color: var(--text);
-      font-weight: 600;
-      cursor: pointer;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(4, 7, 16, 0.8);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--cyan);
+    }
+
+    .btn-submit {
+      align-self: flex-start;
+      padding: 12px 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #00f3ff 0%, #0284c7 100%);
+      color: #040914;
+      font-weight: 700;
       font-family: 'Outfit', sans-serif;
-      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 243, 255, 0.3);
       transition: all 0.2s ease;
     }
 
-    .btn:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 243, 255, 0.5);
     }
 
     footer {
@@ -188,7 +288,10 @@
         </div>
         bio<span>reco</span>
       </div>
-      <a href="https://github.com/fatimaelkhadiripro-bit/bioreco" target="_blank" class="btn">GitHub Repository</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </header>
 
@@ -198,11 +301,19 @@
       <div class="badge">Biomedical Perception Suite</div>
       <h1><span style="color: var(--cyan);">Bioreco</span> — Making Human Organ Perception <br>Easier & Accessible</h1>
       <p>Bioreco is dedicated to building models and applications that simplify human organ perception, providing advanced sensor fusion services combining Echography (ultrasound) imaging with 3D organ models.</p>
+
+      <!-- Image Showcase with Comment -->
+      <div class="image-box">
+        <img src="./bioreco_fusion_visualization.jpg" alt="Bioreco Echography and 3D Organ Sensor Fusion Visualization">
+        <div class="image-comment">
+          <strong>Sensor Fusion Technology:</strong> Real-time spatial registration aligning multi-planar Echography (ultrasound) slice sweeps with volumetric 3D organ anatomical models.
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Services & Focus -->
-  <section class="container">
+  <section id="services" class="container">
     <h2 style="text-align: center; margin-bottom: 16px; font-size: 2.2rem;">Core Focus & Services</h2>
     <div class="grid">
       <div class="card">
@@ -228,6 +339,38 @@
         </h3>
         <p>Lightweight, accessible web tools enabling researchers and developers to visualize and interact with organ perception models.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container">
+    <div class="contact-section">
+      <h2 style="font-size: 2rem; margin-bottom: 8px;">Contact Bioreco</h2>
+      <p style="color: var(--muted);">Interested in our organ perception models or sensor fusion services? Send us a message.</p>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for contacting Bioreco. We will get back to you shortly.');">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Dr. Alex Vance" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="alex@clinic.org" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="Sensor Fusion Model Inquiry" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="How can we assist with your organ perception application?" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
     </div>
   </section>
 
